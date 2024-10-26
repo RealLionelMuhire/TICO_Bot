@@ -1,15 +1,19 @@
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 import './rootLayout.css'
 
 const RootLayout = () => {
   return (
     <div className='rootLayout'>
-        <header className='rootLayout'>
+        <header>
             <Link to='/'>
-                <img src='/logo.png' alt='' />
-                <span>TICO AI ChatBoT</span>
+                <img src='/logo.png' alt="" />
+                <span>TICO AI</span>
             </Link>
+            <div className="user">User</div>
         </header>
+        <main>
+            <Outlet />
+        </main>
     </div>
   )
 }
