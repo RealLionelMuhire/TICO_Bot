@@ -12,18 +12,30 @@ import {
 import Homepage from './routes/homepage/Homepage.jsx';
 import Dashboard from './routes/dashboard/Dashboard.jsx';
 import Chatpage from './routes/chatpage/Chatpage.jsx';
+import RootLayout from './layouts/rootLayout/RootLayout.jsx';
+import DashboardLayout from './layouts/dashboardLayout/DashboardLayout.jsx';
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Homepage />
-  },
-  {
-    path: "dashboard",
-    // element: <Dashboard />,
-    children: [
-      { path: "/dashboard", element: <Dashboard /> },
-      { path: "/dashboard/chats/:id", element: <Chatpage /> }
+    element: <RootLayout/>,
+    children:[
+      {
+        path: '/',
+        element: <Homepage/>
+      },
+      {
+        element: <DashboardLayout/>,
+        children: [
+          {
+            path: '/dashboard',
+            element: <Dashboard/>
+          },
+          {
+            path: '/dashboard/chats/:id',
+            element: <Chatpage/>
+          }
+        ]
+      },
     ],
   },
 ]);
